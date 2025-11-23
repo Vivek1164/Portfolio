@@ -1,13 +1,19 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
-import { useRef } from 'react'
-import { Calendar, MapPin, Building2, Briefcase, ExternalLink } from 'lucide-react'
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+import {
+  Calendar,
+  MapPin,
+  Building2,
+  Briefcase,
+  ExternalLink,
+} from "lucide-react";
 
 const Experience = () => {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const experiences = [
     {
@@ -17,13 +23,22 @@ const Experience = () => {
       location: "Faridabad, Haryana, India",
       type: "Full-time",
       link: "https://Pixell.in",
-      description: "Building and scaling a multi-tenant SaaS accreditation platform with secure, reliable infrastructure and modern web technologies.",
+      description:
+        "Building and scaling a multi-tenant SaaS accreditation platform with secure, reliable infrastructure and modern web technologies.",
       achievements: [
-        "Developed and maintained a multi-tenant SaaS platform supporting 5,000+ institutional records, ensuring 99.9% uptime and secure data handling.",
-        "Automated accreditation workflows, cutting manual processing time by 60%, including document submission, compliance tracking, and generation of NAAC/SQAAF-compliant SSR reports.",
-        "Implemented role-based access control (RBAC) for 1,000+ users and built real-time dashboards that improved decision-making efficiency by 40%."
+        "Contributed to building a vendor-focused operations portal where vendors can view and manage their tasks through a clean, unified interface.",
+        "Assisted in writing integrated tests across different modules and implemented a weekly cron job to automate campaign progress report generation.",
+        "Developed reusable UI components and shared modules to support faster development and maintain consistent design across the platform.",
+        "Supported the implementation of RBAC for 50+ users and contributed to real-time dashboard features that improved decision-making speed by 40%.",
       ],
-      technologies: ["React", "Next.js", "Node.js", "MongoDB", "AWS", "Testing"]
+      technologies: [
+        "React",
+        "Next.js",
+        "Node.js",
+        "MongoDB",
+        "AWS",
+        "Testing",
+      ],
     },
     {
       company: " Unified Mentor PVT Ltd.",
@@ -32,15 +47,16 @@ const Experience = () => {
       location: "Work from Home, India",
       type: "Contract",
       link: "https://www.unifiedmentor.com/",
-      description: "Led usability assessments and provided actionable UX insights across web and mobile applications.",
+      description:
+        "Led usability assessments and provided actionable UX insights across web and mobile applications.",
       achievements: [
         "Developed reusable, responsive React components using CSS (Flexbox, Grid, and media queries) to design accessible, mobile-first pages.",
         "User Experience and Usability Analysis: Assessed and provided feedback on 10+ websites and mobile applications, ensuring optimal experiences across diverse platforms.",
-        "Product Quality and User Engagement Enhancement: Identified and reported 100+ critical usability issues, enabling teams to enhance quality and achieve a 30% increase in user engagement."
+        "Product Quality and User Engagement Enhancement: Identified and reported 100+ critical usability issues, enabling teams to enhance quality and achieve a 30% increase in user engagement.",
       ],
-      technologies: ["API testing", "JavaScript", "CSS", "Quality Assurance"]
-    }
-  ]
+      technologies: ["API testing", "JavaScript", "CSS", "Quality Assurance"],
+    },
+  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -48,18 +64,18 @@ const Experience = () => {
       opacity: 1,
       transition: {
         delayChildren: 0.2,
-        staggerChildren: 0.3
-      }
-    }
-  }
+        staggerChildren: 0.3,
+      },
+    },
+  };
 
   const itemVariants = {
     hidden: { x: -50, opacity: 0 },
     visible: {
       x: 0,
-      opacity: 1
-    }
-  }
+      opacity: 1,
+    },
+  };
 
   return (
     <section id="experience" className="py-20 bg-gray-50">
@@ -113,13 +129,15 @@ const Experience = () => {
                 >
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
                     <div>
-                      <h3 className="text-2xl font-bold text-gray-900 mb-2">{exp.role}</h3>
+                      <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                        {exp.role}
+                      </h3>
                       <div className="flex items-center gap-3 text-primary-600 mb-2">
                         <div className="flex items-center space-x-2">
                           <Building2 className="w-5 h-5" />
                           <span className="font-semibold">{exp.company}</span>
                         </div>
-                        {('link' in exp && exp.link) && (
+                        {"link" in exp && exp.link && (
                           <a
                             href={(exp as any).link}
                             target="_blank"
@@ -151,14 +169,22 @@ const Experience = () => {
                   </p>
 
                   <div className="mb-6">
-                    <h4 className="text-lg font-semibold text-gray-900 mb-3">Key Achievements:</h4>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-3">
+                      Key Resonsibilities:
+                    </h4>
                     <ul className="space-y-2">
                       {exp.achievements.map((achievement, achIndex) => (
                         <motion.li
                           key={achIndex}
                           initial={{ opacity: 0, x: -20 }}
-                          animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                          transition={{ delay: 0.5 + index * 0.3 + achIndex * 0.1 }}
+                          animate={
+                            isInView
+                              ? { opacity: 1, x: 0 }
+                              : { opacity: 0, x: -20 }
+                          }
+                          transition={{
+                            delay: 0.5 + index * 0.3 + achIndex * 0.1,
+                          }}
                           className="flex items-start space-x-2"
                         >
                           <div className="w-2 h-2 bg-primary-600 rounded-full mt-2 flex-shrink-0"></div>
@@ -169,14 +195,22 @@ const Experience = () => {
                   </div>
 
                   <div>
-                    <h4 className="text-lg font-semibold text-gray-900 mb-3">Technologies Used:</h4>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-3">
+                      Technologies Used:
+                    </h4>
                     <div className="flex flex-wrap gap-2">
                       {exp.technologies.map((tech, techIndex) => (
                         <motion.span
                           key={tech}
                           initial={{ opacity: 0, scale: 0.8 }}
-                          animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                          transition={{ delay: 0.7 + index * 0.3 + techIndex * 0.05 }}
+                          animate={
+                            isInView
+                              ? { opacity: 1, scale: 1 }
+                              : { opacity: 0, scale: 0.8 }
+                          }
+                          transition={{
+                            delay: 0.7 + index * 0.3 + techIndex * 0.05,
+                          }}
                           className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium hover:bg-primary-100 hover:text-primary-700 transition-colors"
                         >
                           {tech}
@@ -191,7 +225,7 @@ const Experience = () => {
         </motion.div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Experience
+export default Experience;

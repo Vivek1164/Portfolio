@@ -65,7 +65,7 @@ const About = () => {
               Full-stack developer with 1.5 years of experience building
               scalable, responsive web applications and end-to-end SaaS
               solutions. Skilled in React.js, JavaScript, Node.js, MongoDB, and
-              AWS, with experience in API development, cloud deployment,
+              AWS, with experience in REST API, cloud deployment,
               integrated testing, and CI/CD pipelines. Delivered
               production-ready features across multiple projects, integrating AI
               capabilities using Gemini for data processing, and intelligent

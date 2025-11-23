@@ -1,15 +1,15 @@
-'use client'
+"use client";
 
-import Hero from '@/components/Hero'
-import About from '@/components/About'
-import Skills from '@/components/Skills'
-import Experience from '@/components/Experience'
-import Education from '@/components/Education'
-import Projects from '@/components/Projects'
-import Contact from '@/components/Contact'
-import GithubStats from '@/components/GithubStats'
-import Resume from '@/components/Resume'
-import AnalyticsDashboard from '@/components/AnalyticsDashboard'
+import Hero from "@/components/Hero";
+import About from "@/components/About";
+import Skills from "@/components/Skills";
+import Experience from "@/components/Experience";
+import Education from "@/components/Education";
+import Projects from "@/components/Projects";
+import Contact from "@/components/Contact";
+import GithubStats from "@/components/GithubStats";
+import Resume from "@/components/Resume";
+import AnalyticsDashboard from "@/components/AnalyticsDashboard";
 
 export default function Home() {
   return (
@@ -18,12 +18,12 @@ export default function Home() {
       <About />
       <Skills />
       <Experience />
+      <Projects />
       <Education />
       {/* <GithubStats /> */}
       {/* <AnalyticsDashboard /> */}
       <Resume />
-      <Projects />
       <Contact />
     </div>
-  )
+  );
 }

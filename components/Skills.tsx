@@ -15,13 +15,9 @@ import {
   GitBranch,
   Shield,
   Smartphone,
-  Globe,
   Table,
-  Bot,
-  Webhook,
+  Globe,
   MailCheck,
-  ShieldCheck,
-  Settings2,
 } from "lucide-react";
 
 const Skills = () => {
@@ -124,15 +120,15 @@ const Skills = () => {
           description: "Operating system",
         },
         {
-          name: "Google Sheets",
+          name: "Postman",
           icon: <Table className="w-6 h-6" />,
           description: "Data capture & reporting",
         },
-        {
-          name: "Env Variables",
-          icon: <Settings2 className="w-6 h-6" />,
-          description: "Secure config (.env)",
-        },
+        // {
+        //   name: "Env Variables",
+        //   icon: <Settings2 className="w-6 h-6" />,
+        //   description: "Secure config (.env)",
+        // },
       ],
     },
     {

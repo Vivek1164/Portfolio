@@ -310,7 +310,7 @@ const Resume = () => {
 
               <div className="project space-y-1">
                 <div className="project-title font-semibold text-gray-900 flex items-center gap-2">
-                  Vertex website
+                  Media Manager
                   <a
                     href="https://capture-and-storage-web-application.vercel.app/"
                     target="_blank"
