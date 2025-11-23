@@ -122,7 +122,7 @@ const Skills = () => {
         {
           name: "Postman",
           icon: <Table className="w-6 h-6" />,
-          description: "Data capture & reporting",
+          description: "API testing",
         },
         // {
         //   name: "Env Variables",
