@@ -21,13 +21,10 @@ const Contact = () => {
     email: "",
     message: "",
   });
-  const [honeypot, setHoneypot] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<
     "idle" | "success" | "error"
   >("idle");
-
-  const GAS_ENDPOINT = (process.env.NEXT_PUBLIC_GAS_URL as string) || "";
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -43,37 +40,27 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simple bot check
-    if (honeypot.trim() !== "") {
-      setIsSubmitting(false);
-      return;
-    }
-
     try {
-      if (!GAS_ENDPOINT) {
-        throw new Error("Missing Google Apps Script endpoint");
-      }
-
-      const res = await fetch(GAS_ENDPOINT, {
+      const response = await fetch("/api/send-email", {
         method: "POST",
-        headers: { "Content-Type": "text/plain" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
-          ...formData,
-          website: window.location.href,
-          userAgent: navigator.userAgent,
-          timestamp: new Date().toISOString(),
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
         }),
       });
 
-      // Expect JSON response { success: boolean }
-      if (!res.ok) throw new Error("Failed to submit");
-      const data = await res.json().catch(() => ({ success: true }));
-      if (data && data.success === false)
-        throw new Error("Submission rejected");
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
 
       setSubmitStatus("success");
       setFormData({ name: "", email: "", message: "" });
     } catch (err) {
+      console.error("Error sending message:", err);
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
@@ -187,14 +174,14 @@ const Contact = () => {
             </motion.div>
 
             <motion.div variants={itemVariants} className="space-y-6">
-              {contactInfo.map((info, index) => (
+              {contactInfo.map((info) => (
                 <motion.a
                   key={info.title}
                   whileHover={{ x: 10 }}
                   href={info.href}
                   className="flex items-center space-x-4 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 group"
                 >
-                  <div className="text-primary-600 group-hover:text-primary-700 transition-colors">
+                  <div className="text-blue-600 group-hover:text-blue-700 transition-colors">
                     {info.icon}
                   </div>
                   <div>
@@ -212,7 +199,7 @@ const Contact = () => {
                 Follow Me
               </h4>
               <div className="flex space-x-4">
-                {socialLinks.map((social, index) => (
+                {socialLinks.map((social) => (
                   <motion.a
                     key={social.name}
                     whileHover={{ scale: 1.1, y: -2 }}
@@ -244,15 +231,6 @@ const Contact = () => {
             </motion.h3>
 
             <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Honeypot field */}
-              <input
-                type="text"
-                value={honeypot}
-                onChange={(e) => setHoneypot(e.target.value)}
-                className="hidden"
-                tabIndex={-1}
-                autoComplete="off"
-              />
               <motion.div variants={itemVariants}>
                 <label
                   htmlFor="name"
@@ -267,7 +245,7 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-black focus:border-transparent transition-all duration-200"
                   placeholder="Your name"
                 />
               </motion.div>
@@ -286,7 +264,7 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-black focus:border-transparent transition-all duration-200"
                   placeholder="your.email@example.com"
                 />
               </motion.div>
@@ -305,7 +283,7 @@ const Contact = () => {
                   onChange={handleInputChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 resize-none"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-black focus:border-transparent transition-all duration-200 resize-none"
                   placeholder="Tell me about your project..."
                 />
               </motion.div>
@@ -319,7 +297,7 @@ const Contact = () => {
                   className={`w-full flex items-center justify-center space-x-2 px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${
                     isSubmitting
                       ? "bg-gray-400 cursor-not-allowed"
-                      : "bg-primary-600 hover:bg-primary-700 text-white shadow-lg hover:shadow-xl"
+                      : "bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-xl"
                   }`}
                 >
                   {isSubmitting ? (
@@ -354,17 +332,6 @@ const Contact = () => {
                 >
                   Sorry, there was an error sending your message. Please try
                   again.
-                </motion.div>
-              )}
-
-              {!GAS_ENDPOINT && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="bg-yellow-50 border border-yellow-300 text-yellow-800 px-4 py-3 rounded-lg text-sm"
-                >
-                  Note: Set NEXT_PUBLIC_GAS_URL in your .env.local to enable
-                  Google Sheets submissions.
                 </motion.div>
               )}
             </form>

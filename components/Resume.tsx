@@ -31,7 +31,7 @@ const Resume = () => {
       <!DOCTYPE html>
       <html>
         <head>
-          <title>Shivansh Raheja - Resume</title>
+          <title>Vivek Kumar - Resume</title>
           <style>
             * { margin: 0; padding: 0; box-sizing: border-box; }
             body { 

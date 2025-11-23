@@ -10,7 +10,7 @@ type Repo = {
   html_url: string
 }
 
-const GITHUB_USERNAME = 'Shivansh-Raheja'
+const GITHUB_USERNAME = 'Vivek-Raheja'
 
 const GithubStats = () => {
   const [loading, setLoading] = useState(true)
