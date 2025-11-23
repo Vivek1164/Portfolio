@@ -108,10 +108,10 @@ const Resume = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-1">
+            <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-1">
               Resume
             </h2>
-            <p className="text-gray-600">
+            <p className="text-gray-600 text-sm md:text-base">
               One-page printable resume generated from live content
             </p>
           </div>
@@ -121,9 +121,9 @@ const Resume = () => {
             target="_blank"
             rel="noopener noreferrer"
             // onClick={handlePrint}
-            className="no-print inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg font-semibold"
+            className="no-print inline-flex text-sm md:text-base items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg font-semibold"
           >
-            <Download className="w-4 h-4" /> Download PDF
+            <Download className="w-8 h-8" /> Download Resume
           </a>
         </div>
 
@@ -133,25 +133,25 @@ const Resume = () => {
         >
           {/* Header */}
           <div className="header mb-8 text-gray-800">
-            <div className="name font-bold text-xl">Vivek Kumar</div>
-            <div className="title">Full Stack Developer</div>
-            <div className="contact space-y-1">
-              <div className=" flex justify-start items-center">
-                <div className="flex items-center mr-4 gap-1">
+            <div className="name font-bold text-2xl">Vivek Kumar</div>
+            <div className="title font-semibold">Full Stack Developer</div>
+            <div className="contact my-4 space-y-1">
+              <div className=" md:flex justify-start items-center">
+                <div className="flex items-center mr-4 gap-2">
                   <Mail className="inline-block w-4 h-4" />
                   vivekkumar1164@gmail.com
                 </div>
-                <div className="flex items-center">
+                <div className="flex items-center gap-2">
                   <Phone className="inline-block w-4 h-4" />
                   +91-7503710648
                 </div>
               </div>
-              <div className=" flex justify-start items-center">
-                <div className=" flex items-center gap-1 mr-4">
+              <div className=" md:flex justify-start items-center">
+                <div className=" flex items-center gap-2 mr-4">
                   <Github className="inline-block w-4 h-4" />
                   github.com/Vivek1164
                 </div>
-                <div className=" flex items-center gap-1">
+                <div className=" flex items-center gap-2 mr-4">
                   <Linkedin className="inline-block w-4 h-4" />
                   linkedin.com/in/vivek-kumar-a83b61254/
                 </div>
@@ -253,7 +253,7 @@ const Resume = () => {
 
               <div className="project space-y-1">
                 <div className="project-title font-semibold text-gray-900 flex items-center gap-2">
-                  Pixell 
+                  Pixell
                   <a
                     href="https://pixell.in"
                     target="_blank"
@@ -322,12 +322,14 @@ const Resume = () => {
                 </div>
                 <ul className="list-disc pl-5 space-y-1.5 leading-6 text-gray-700 text-[15px]">
                   <li>
-                    Developed Media Manager a MERN stack app showcasing React, Node.js,
-                    Express, MongoDB, and JWT authentication for secure media handling.
+                    Developed Media Manager a MERN stack app showcasing React,
+                    Node.js, Express, MongoDB, and JWT authentication for secure
+                    media handling.
                   </li>
                   <li>
-                    Implemented Multer-based file upload system and integrated RESTful APIs
-                    with Redux Toolkit for efficient state management and seamless UX.
+                    Implemented Multer-based file upload system and integrated
+                    RESTful APIs with Redux Toolkit for efficient state
+                    management and seamless UX.
                   </li>
                 </ul>
               </div>
@@ -344,7 +346,7 @@ const Resume = () => {
                 {Object.entries(skills).map(([category, skillList]) => (
                   <div
                     key={category}
-                    className="mb-2 grid grid-cols-2 gap-2 whitespace-nowrap"
+                    className="mb-2 grid grid-cols-2 gap-2 md:whitespace-nowrap"
                   >
                     <div className="font-semibold text-gray-800 mb-1">
                       {category}

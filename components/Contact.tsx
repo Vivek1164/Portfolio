@@ -84,7 +84,7 @@ const Contact = () => {
     {
       icon: <MapPin className="w-6 h-6" />,
       title: "Location",
-      value: "Remote / Available Worldwide",
+      value: "Remote - World Wide / Available in India",
       href: "#",
     },
   ];
