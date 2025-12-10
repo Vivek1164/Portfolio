@@ -7,6 +7,7 @@ import { useRef } from "react";
 const About = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  console.log("About section in view:", isInView);
   
 
   const container = {
